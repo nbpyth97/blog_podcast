@@ -5,6 +5,12 @@ async function renderNav() {
   if (!header) return;
   const { data: { session } } = await supabase.auth.getSession();
   const loggedIn = !!session;
+
+  const marquee = document.createElement('div');
+  marquee.className = 'marquee-bar';
+  marquee.innerHTML = '<marquee>★ BEM-VINDO AO CACHIMBO RADICAL ★ MELHOR VISUALIZADO A 1024x768 ★ IDEIAS, CONVERSAS E OUTRAS HERESIAS ★</marquee>';
+  header.parentNode.insertBefore(marquee, header);
+
   header.innerHTML = `
     <div class="nav-inner">
       <a class="brand" href="index.html">Cachimbo Radical</a>
