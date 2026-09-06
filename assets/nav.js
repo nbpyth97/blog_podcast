@@ -5,21 +5,18 @@ async function renderNav() {
   if (!header) return;
   const { data: { session } } = await supabase.auth.getSession();
   const loggedIn = !!session;
-
-  const marquee = document.createElement('div');
-  marquee.className = 'marquee-bar';
-  marquee.innerHTML = '<marquee>★ BEM-VINDO AO CACHIMBO RADICAL ★ MELHOR VISUALIZADO A 1024x768 ★ IDEIAS, CONVERSAS E OUTRAS HERESIAS ★</marquee>';
-  header.parentNode.insertBefore(marquee, header);
+  const path = location.pathname.split('/').pop() || 'index.html';
+  const activeClass = (page) => path === page ? ' class="active"' : '';
 
   header.innerHTML = `
     <div class="nav-inner">
       <a class="brand" href="index.html">Cachimbo Radical</a>
       <nav>
-        <a href="posts.html">Posts</a>
-        <a href="podcasts.html">Podcast</a>
+        <a href="posts.html"${activeClass('posts.html')}>Posts</a>
+        <a href="podcasts.html"${activeClass('podcasts.html')}>Podcasts</a>
         ${loggedIn
-          ? `<a href="escrever.html">Escrever</a><a href="#" id="logout-link">Sair</a>`
-          : `<a href="login.html">Entrar</a>`}
+          ? `<a href="escrever.html" class="muted">Escrever</a><a href="#" id="logout-link" class="muted">Sair</a>`
+          : `<a href="login.html" class="muted">Entrar</a>`}
       </nav>
     </div>`;
   const logoutLink = document.getElementById('logout-link');
