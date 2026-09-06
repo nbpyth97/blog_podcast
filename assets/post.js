@@ -1,5 +1,5 @@
 import { supabase } from './supabase-client.js';
-import { formatDate, esc, pseudoId, pseudoNo } from './format.js';
+import { formatDate, esc } from './format.js';
 import { renderMarkdown } from './markdown.js';
 
 const slug = new URLSearchParams(location.search).get('slug');
@@ -24,12 +24,9 @@ async function load() {
 
   document.title = `${post.title} — Cachimbo Radical`;
   container.innerHTML = `
-    <div class="item-meta">
-      <a href="posts.html?seccao=${encodeURIComponent(post.sections?.slug ?? '')}" class="board-tag">/${esc(post.sections?.slug ?? '')}/</a> ·
-      Anónimo <span class="post-no">ID:${pseudoId(slug)} No.${pseudoNo(slug)}</span> ·
-      ${formatDate(post.created_at)}
-    </div>
+    <div class="item-meta"><a href="posts.html?seccao=${encodeURIComponent(post.sections?.slug ?? '')}">${esc(post.sections?.name ?? '')}</a> · ${formatDate(post.created_at)}</div>
     <h1>${esc(post.title)}</h1>
+    <hr class="rainbow-hr">
     <div class="post-content">${renderMarkdown(post.content)}</div>
     <p><a href="posts.html">← Voltar aos posts</a></p>`;
 }
