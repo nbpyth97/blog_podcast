@@ -32,18 +32,7 @@ export function esc(str) {
   return div.innerHTML;
 }
 
-export function pseudoId(str) {
-  let h = 0;
-  for (let i = 0; i < (str || '').length; i++) {
-    h = (h * 31 + str.charCodeAt(i)) >>> 0;
-  }
-  return h.toString(16).padStart(8, '0').slice(0, 8);
-}
-
-export function pseudoNo(str) {
-  let h = 0;
-  for (let i = 0; i < (str || '').length; i++) {
-    h = (h * 131 + str.charCodeAt(i)) >>> 0;
-  }
-  return (h % 900000 + 100000).toString();
+export function isRecent(iso, days = 3) {
+  const ageMs = Date.now() - new Date(iso).getTime();
+  return ageMs < days * 24 * 60 * 60 * 1000;
 }
