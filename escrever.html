@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Escrever — Cachimbo Radical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header id="site-header"></header>
 <main>
+  <p class="kicker">Redação</p>
   <h1>Escrever</h1>
-  <hr class="rainbow-hr">
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="post">Novo post</button>
@@ -68,11 +71,11 @@
   <section id="tab-gerir" style="display:none;">
     <h2>Posts</h2>
     <div id="manage-posts"><p class="empty-state">A carregar…</p></div>
-    <h2>Episódios</h2>
+    <h2 style="margin-top:2rem;">Episódios</h2>
     <div id="manage-podcasts"><p class="empty-state">A carregar…</p></div>
   </section>
 
-  <p style="margin-top:2rem;"><a href="#" id="logout-link-2">Sair da conta</a></p>
+  <p style="margin-top:2.5rem;"><a href="#" id="logout-link-2" style="font-size:0.85rem;font-weight:600;color:var(--ink-soft);">Sair da conta</a></p>
 </main>
 <footer>Cachimbo Radical</footer>
 <script type="module" src="assets/nav.js"></script>
