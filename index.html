@@ -5,30 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cachimbo Radical</title>
 <meta name="description" content="Cachimbo Radical — posts e podcast.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header id="site-header"></header>
 <main>
-  <h1>Cachimbo Radical</h1>
-  <hr class="rainbow-hr">
-  <p class="tagline">Ideias, conversas e outras heresias.</p>
+  <section class="masthead">
+    <p class="kicker">Publicação independente</p>
+    <h1>Cachimbo Radical</h1>
+    <p class="tagline">Ideias, conversas e outras heresias — política, sociedade e cultura, sem filtros.</p>
+  </section>
 
-  <div class="hero-links">
-    <a class="hero-card bevel" href="posts.html">
-      <h2>Posts</h2>
-      <p>Textos organizados por tema.</p>
-    </a>
-    <a class="hero-card bevel" href="podcasts.html">
-      <h2>Podcast</h2>
-      <p>Episódios em áudio.</p>
-    </a>
-  </div>
+  <hr class="rule">
 
-  <h2>Mais recentes</h2>
-  <div id="latest-list" class="item-list">
-    <p class="empty-state">A carregar…</p>
-  </div>
+  <section class="home-section">
+    <div class="section-heading">
+      <div>
+        <p class="kicker">Ler</p>
+        <h2>Posts</h2>
+      </div>
+      <a class="see-all" href="posts.html">Ver todos os posts →</a>
+    </div>
+    <div id="home-posts">
+      <p class="empty-state">A carregar…</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="home-section">
+    <div class="section-heading">
+      <div>
+        <p class="kicker">Ouvir</p>
+        <h2>Podcasts</h2>
+      </div>
+      <a class="see-all" href="podcasts.html">Ver todos os episódios →</a>
+    </div>
+    <div id="home-podcasts">
+      <p class="empty-state">A carregar…</p>
+    </div>
+  </section>
 </main>
 <footer>Cachimbo Radical</footer>
 <script type="module" src="assets/nav.js"></script>
