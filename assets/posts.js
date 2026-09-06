@@ -1,5 +1,5 @@
 import { supabase } from './supabase-client.js';
-import { formatDate, excerpt, esc, pseudoId, pseudoNo } from './format.js';
+import { formatDate, excerpt, esc, isRecent } from './format.js';
 
 const params = new URLSearchParams(location.search);
 const activeSlug = params.get('seccao') || null;
@@ -8,8 +8,8 @@ const filtersEl = document.getElementById('section-filters');
 const listEl = document.getElementById('posts-list');
 
 function renderFilters(sections) {
-  const chips = [`<a class="chip ${!activeSlug ? 'active' : ''}" href="posts.html">/todas/</a>`]
-    .concat(sections.map(s => `<a class="chip ${activeSlug === s.slug ? 'active' : ''}" href="posts.html?seccao=${encodeURIComponent(s.slug)}">/${esc(s.slug)}/ ${esc(s.name)}</a>`));
+  const chips = [`<a class="chip ${!activeSlug ? 'active' : ''}" href="posts.html">Todas</a>`]
+    .concat(sections.map(s => `<a class="chip ${activeSlug === s.slug ? 'active' : ''}" href="posts.html?seccao=${encodeURIComponent(s.slug)}">${esc(s.name)}</a>`));
   filtersEl.innerHTML = chips.join('');
 }
 
@@ -19,12 +19,8 @@ function renderPosts(posts) {
     return;
   }
   listEl.innerHTML = posts.map(p => `
-    <article class="item">
-      <div class="item-meta">
-        <span class="board-tag">/${esc(p.sections?.slug ?? '')}/</span> ·
-        Anónimo <span class="post-no">ID:${pseudoId(p.slug)} No.${pseudoNo(p.slug)}</span> ·
-        ${formatDate(p.created_at)}
-      </div>
+    <article class="item bevel">
+      <div class="item-meta">${esc(p.sections?.name ?? '')} · ${formatDate(p.created_at)}${isRecent(p.created_at) ? '<span class="badge-new">NOVO!</span>' : ''}</div>
       <h2><a href="post.html?slug=${encodeURIComponent(p.slug)}">${esc(p.title)}</a></h2>
       <p class="excerpt">${esc(excerpt(p.content))}</p>
     </article>`).join('');
