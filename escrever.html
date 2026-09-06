@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escrever — Cachimbo Radical</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<main>
+  <h1>Escrever</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="post">Novo post</button>
+    <button class="tab-btn" data-tab="podcast">Novo episódio</button>
+    <button class="tab-btn" data-tab="gerir">Gerir publicados</button>
+  </div>
+
+  <section id="tab-post">
+    <form id="post-form">
+      <div id="post-msg"></div>
+      <label>Título
+        <input type="text" name="title" required>
+      </label>
+      <label>Secção
+        <select name="section" id="post-section-select"></select>
+      </label>
+      <div id="post-new-section-wrap" style="display:none;">
+        <label>Nome da nova secção
+          <input type="text" name="newSection" id="post-new-section">
+        </label>
+      </div>
+      <div class="new-section-toggle" id="post-toggle-new-section">+ criar nova secção</div>
+      <label>Conteúdo (suporta Markdown)
+        <textarea name="content" required></textarea>
+      </label>
+      <button type="submit">Publicar post</button>
+    </form>
+  </section>
+
+  <section id="tab-podcast" style="display:none;">
+    <form id="podcast-form">
+      <div id="podcast-msg"></div>
+      <label>Título
+        <input type="text" name="title" required>
+      </label>
+      <label>Secção (opcional)
+        <select name="section" id="podcast-section-select"></select>
+      </label>
+      <div id="podcast-new-section-wrap" style="display:none;">
+        <label>Nome da nova secção
+          <input type="text" name="newSection" id="podcast-new-section">
+        </label>
+      </div>
+      <div class="new-section-toggle" id="podcast-toggle-new-section">+ criar nova secção</div>
+      <label>Descrição
+        <textarea name="description" style="min-height:120px;"></textarea>
+      </label>
+      <label>Ficheiro áudio (mp3, m4a, wav…)
+        <input type="file" name="audio" accept="audio/*" required>
+      </label>
+      <button type="submit">Publicar episódio</button>
+    </form>
+  </section>
+
+  <section id="tab-gerir" style="display:none;">
+    <h2>Posts</h2>
+    <div id="manage-posts"><p class="empty-state">A carregar…</p></div>
+    <h2>Episódios</h2>
+    <div id="manage-podcasts"><p class="empty-state">A carregar…</p></div>
+  </section>
+
+  <p style="margin-top:2rem;"><a href="#" id="logout-link-2">Sair da conta</a></p>
+</main>
+<footer>Cachimbo Radical</footer>
+<script type="module" src="assets/nav.js"></script>
+<script type="module" src="assets/escrever.js"></script>
+</body>
+</html>
