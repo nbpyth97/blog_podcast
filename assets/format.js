@@ -36,3 +36,8 @@ export function isRecent(iso, days = 3) {
   const ageMs = Date.now() - new Date(iso).getTime();
   return ageMs < days * 24 * 60 * 60 * 1000;
 }
+
+export function readingTime(text, wpm = 200) {
+  const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / wpm));
+}
